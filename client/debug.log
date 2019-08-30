@@ -1,0 +1,2 @@
+[0828/170229.255:ERROR:process_info.cc(329)] VirtualQueryEx: Accès refusé. (0x5)
+[0828/170230.034:ERROR:process_info.cc(556)] ReadMemoryInfo failed
