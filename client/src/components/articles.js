@@ -166,7 +166,7 @@ class article extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    articles: state.articles,
+    articles: state.Reducer.articles,
     filter: { ...state }
   };
 };
