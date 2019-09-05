@@ -42,9 +42,9 @@ router.post("/register", (req, res) => {
       });
     });
   });
-});
-
+});    
 //route: http://localhost:5000/users/login
+
 //desc: login user
 //isPrivate: false
 router.post("/login", (req, res) => {
