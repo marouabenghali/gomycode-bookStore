@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from 'react-redux'
-import {userLoginRequest} from '../../actions'
+import {login} from '../../authaction'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ onChange=(e)=>{
 }
 
     render(){ 
-      const {userLoginRequest}=this.props
+      const {login}=this.props
   return (
     <div className="wrapper" id="wrapper">
       <section className="my_account_area pt--80 pb--55 bg--white">
@@ -46,7 +46,7 @@ onChange=(e)=>{
                       name="password" />
                     </div>
                     <div className="form__btn">
-                    <button onClick={()=>{userLoginRequest(this.state)}} >Login</button>
+                    <button onClick={()=>{login(this.state)}} >Login</button>
                       <label className="label-for-checkbox">
                         <input
                           id="rememberme"
@@ -168,4 +168,4 @@ onChange=(e)=>{
   );
     }
 }
-export default connect(null,{ userLoginRequest })(LoginForm)
+export default connect(null,{ login })(LoginForm)

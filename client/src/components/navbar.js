@@ -304,7 +304,7 @@ const navbar = props => {
                     </Link>
                   </li>
                   <li className="setting__bar__icon">
-                    <a className="setting__active" href="#"></a>
+                    <Link to='/login' className="setting__active" ></Link>
                     <Link to="/dashbord"><i className="fa fa-dashboard"></i></Link>
                     {/* <Dashbord/> */}
                        {/* <Route exact path="/dashbord" component={Dashbord}/> */}
@@ -329,7 +329,7 @@ function mapDispatchToProps(dispatch) {
 }
 const mapStateToProps = state => {
   return {
-    articlesbought: state.selledarticle.length,
+    articlesbought: state.Reducer.selledarticle.length,
     rate: state.Findbyrating
   };
 };

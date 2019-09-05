@@ -11,7 +11,7 @@ import Home from "./Home";
 // import Checkout from "./Checkout";
 // import SignupForm from "./account/register";
 
-// import LoginForm from "./account/Login";
+import LoginForm from "./account/Login";
 // import AdminLoginForm from "./account admin/Login"
 // import AdminSignupForm from "./account admin/register"
 
@@ -51,6 +51,8 @@ export default class index extends Component {
       <Route exact path="/dashbord" component={Dashbord}/> */} */}
                
  <Route exact path="/" component={Articles} /> 
+ 
+ <Route exact path="/login" component={LoginForm} /> 
          {/* <Route exact path="/product" component={Product} />
          <Route exact path="/myshopping" component={Shopping} />
          <Route exact path="/bookinfo" component={Bookinfo}/> */}  */}
