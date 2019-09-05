@@ -1,51 +1,35 @@
-import React from 'react';
+import React from "react";
 import {connect} from 'react-redux'
-import {userSignupRequest} from '../../actions'
+import {adminLoginRequest} from '../../actions'
 
+class AdminLoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+   email:'',
+   password:''
+    }
+}
+onChange=(e)=>{
+  this.setState({[e.target.name]:e.target.value})
+}
 
-class SignupForm extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-     name:'',
-     email:'',
-     password:'',
-     passwordconfirmation:''
-      }
-  }
-  onChange=(e)=>{
-    this.setState({[e.target.name]:e.target.value})
-  }
-  // onSubmit =(e)=>{
-  //   e.preventDefault();
-  //   this.props.userSignupRequest(this.state);
-  //   // axios.post('/customer-list/register',{user:this.state})
-  // }
-        render(){
-          const {userSignupRequest}= this.props
+    render(){ 
+      const {adminLoginRequest}=this.props
   return (
     <div className="wrapper" id="wrapper">
       <section className="my_account_area pt--80 pb--55 bg--white">
         <div className="container">
           <div className="row">
-           
             <div className="col-lg-6 col-12">
               <div className="my__account__wrapper">
-                <h3 className="account__title">Register</h3>
-                {/* <form > */}
+                <h3 className="account__title">Login</h3>
+
+                <form >
                   <div className="account__form">
                     <div className="input__box">
                       <label>
-                        Username <span>*</span>
-                      </label>
-                      <input type="text" 
-                      value={this.state.name}
-                      onChange={this.onChange}
-                      name="name" />
-                      </div>
-                     <div className="input__box">
-                      <label>
-                        Email <span>*</span>
+                      Email address <span>*</span>
                       </label>
                       <input type="email" 
                       value={this.state.email}
@@ -53,7 +37,7 @@ class SignupForm extends React.Component {
                       name="email" />
                     </div>
                     <div className="input__box">
-                      <label>
+                    <label>
                         Password<span>*</span>
                       </label>
                        <input type="password" 
@@ -61,21 +45,24 @@ class SignupForm extends React.Component {
                       onChange={this.onChange}
                       name="password" />
                     </div>
-                    <div className="input__box">
-                      <label>
-                        Password Confirmation<span>*</span>
-                      </label>
-                       <input type="password" 
-                      value={this.state.passwordconfirmation}
-                      onChange={this.onChange}
-                      name="passwordconfirmation" />
-                    </div>
                     <div className="form__btn">
-    
-                      <button onClick={()=>{userSignupRequest(this.state)}} >Register</button>
+                    <button onClick={()=>{adminLoginRequest(this.state)}} >Login</button>
+                      <label className="label-for-checkbox">
+                        <input
+                          id="rememberme"
+                          className="input-checkbox"
+                          name="rememberme"
+                          value="forever"
+                          type="checkbox"
+                        />
+                        <span>Remember me</span>
+                      </label>
                     </div>
+                    <a className="forget_pass" href="#">
+                      Lost your password?
+                    </a>
                   </div>
-                {/* </form> */}
+                </form>
               </div>
             </div>
           </div>
@@ -179,7 +166,6 @@ class SignupForm extends React.Component {
       </footer>
     </div>
   );
+    }
 }
-}
-
-export default connect(null,{ userSignupRequest })(SignupForm)
+export default connect(null,{ adminLoginRequest })(AdminLoginForm)

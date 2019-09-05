@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {userSignupRequest} from '../../actions'
+import {adminSignupRequest} from '../../actions'
 
 
-class SignupForm extends React.Component {
+class AdminSignupForm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -22,7 +22,7 @@ class SignupForm extends React.Component {
   //   // axios.post('/customer-list/register',{user:this.state})
   // }
         render(){
-          const {userSignupRequest}= this.props
+          const {adminSignupRequest}= this.props
   return (
     <div className="wrapper" id="wrapper">
       <section className="my_account_area pt--80 pb--55 bg--white">
@@ -72,7 +72,7 @@ class SignupForm extends React.Component {
                     </div>
                     <div className="form__btn">
     
-                      <button onClick={()=>{userSignupRequest(this.state)}} >Register</button>
+                      <button onClick={()=>{adminSignupRequest(this.state)}} >Register</button>
                     </div>
                   </div>
                 {/* </form> */}
@@ -182,4 +182,4 @@ class SignupForm extends React.Component {
 }
 }
 
-export default connect(null,{ userSignupRequest })(SignupForm)
+export default connect(null,{ adminSignupRequest })(AdminSignupForm)

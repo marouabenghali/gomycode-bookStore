@@ -1,42 +1,40 @@
 const express = require("express");
 const router = express.Router();
 
-// Contact Model
-const Books = require("../models/books");
 
+const BookAdmin = require("../models/booksadmin");
 
 router.get("/", (req, res) => {
-  Books.find()
-    .then(books => res.json(books))
+  BookAdmin.find()
+    .then(booksadmin => res.json(booksadmin))
     .catch(err => res.send("cannot get"));
 });
 router.post("/", (req, res) => {
-  const newBook = new Books({
+  const newBookAdmin = new BookAdmin({
     title: req.body.title,
     img: req.body.img,
-    auteur: req.body.auteur,
-    type: req.body.type,
-    qt: req.body.qt,
     price: req.body.price,
-    rate: req.body.rate,
+    type: req.body.type,
     label: req.body.label,
-    description: req.body.description
-  })
+    description: req.body.description,
+    qt: req.body.qt,
+  });
 
-  newBook.save()
-    .then(books => res.json(books))
+  newBookAdmin
+    .save()
+    .then(booksadmin => res.json(booksadmin))
     .catch(err => res.send("cannot post"));
 });
 
 router.delete("/:id", (req, res) => {
-  Book.findOneAndDelete(req.params.id)
+  BookAdmin.findOneAndDelete(req.params.id)
     .then(data => res.send({ success: true }))
     .catch(err => res.send({ success: false }));
 });
 
 router.put("/:id", (req, res) => {
-  const booklist = req.body;
-  Book.findOneAndUpdate({ _id: req.params.id }, { $set: { ...booklist } })
+  const bookadminlist = req.body;
+  BookAdmin.findOneAndUpdate({ _id: req.params.id }, { $set: { ...bookadminlist } })
     .then(data => res.send({ success: true }))
     .catch(err => res.send({ success: false }));
 });

@@ -5,39 +5,39 @@ const Schema = mongoose.Schema;
 const BookSchema = new Schema({
     title: {
         type: String,
-        required: true
+       
   },
-    image: {
+    img: {
         type: String,
-        required: true
+        
   },
     auteur: {
         type: String,
-        required: true
+       
   },
-    bookType: {
+    type: {
         type: String,
-        required: true
+       
   },
-    quantity: {
+    qt: {
         type: Number,
-        required: true
+     
   },
     price: {
         type: Number,
-        required: true
+        
   },
     rate: {
         type: Number,
-        required: true
+       
   },
     label: {
         type: String,
-        required: true
+    
   },
     description: {
         type: String,
-        required: true
+      
   }
 });
 
