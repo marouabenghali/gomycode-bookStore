@@ -21,6 +21,7 @@ require("./config/passport")(passport);
 //connect bd
 // const db="mongodb+srv://bookstore:bookstore@cluster0-db2dl.mongodb.net/test?retryWrites=true&w=majority"
 const db = "mongodb://localhost:27017/booklist";
+// const db = "mongodb://localhost:27017/bookadminlist";
 
 
 
@@ -38,6 +39,7 @@ app.use("/book-list", require("./routes/books"));
 app.use("/commande-list", require("./routes/commandes"));
 app.use("/customer-list", require("./routes/customers"));
 app.use("/admin-list", require("./routes/admins"));
+app.use("/bookadmin-list", require("./routes/booksadmin"));
 //*app.use("/users", users);
 
 app.listen(5000, err => {

@@ -1,27 +1,21 @@
 import React from "react";
+import {connect} from 'react-redux'
+import {userLoginRequest} from '../../actions'
 
-class SignupForm extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-   username:'',
    email:'',
-   password:'',
-   passwordconfirmation:'',
-   timezone:''
+   password:''
     }
-  
-  this.onChange=this.onChange.bind(this);
-  this.onSubmit=this.onSubmit.bind(this);
 }
-onChange(e){
+onChange=(e)=>{
   this.setState({[e.target.name]:e.target.value})
 }
-onSubmit (e){
-  e.preventDefault(this.state);
-}
-    render(){
-     
+
+    render(){ 
+      const {userLoginRequest}=this.props
   return (
     <div className="wrapper" id="wrapper">
       <section className="my_account_area pt--80 pb--55 bg--white">
@@ -31,25 +25,28 @@ onSubmit (e){
               <div className="my__account__wrapper">
                 <h3 className="account__title">Login</h3>
 
-                <form action="#" >
+                <form >
                   <div className="account__form">
                     <div className="input__box">
                       <label>
-                        Username or email address <span>*</span>
+                      Email address <span>*</span>
                       </label>
-                      <input type="text" 
-                      value={this.state.username}
+                      <input type="email" 
+                      value={this.state.email}
                       onChange={this.onChange}
-                      name="username" />
+                      name="email" />
                     </div>
                     <div className="input__box">
-                      <label>
+                    <label>
                         Password<span>*</span>
                       </label>
-                      <input type="text" />
+                       <input type="password" 
+                      value={this.state.password}
+                      onChange={this.onChange}
+                      name="password" />
                     </div>
                     <div className="form__btn">
-                      <button onSubmit={this.onSubmit}>Login</button>
+                    <button onClick={()=>{userLoginRequest(this.state)}} >Login</button>
                       <label className="label-for-checkbox">
                         <input
                           id="rememberme"
@@ -80,7 +77,7 @@ onSubmit (e){
                 <div className="footer__widget footer__menu">
                   <div className="ft__logo">
                     <a href="index.html">
-                      <img src={require("../images/logo/3.png")} alt="logo" />
+                      {/* <img src={require("../images/logo/3.png")} alt="logo" /> */}
                     </a>
                     <p>
                       There are many variations of passages of Lorem Ipsum
@@ -160,7 +157,7 @@ onSubmit (e){
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12">
                 <div className="payment text-right">
-                  <img src={require("../images/icons/payment.png")} alt="" />
+                  {/* <img src={require("../images/icons/payment.png")} alt="" /> */}
                 </div>
               </div>
             </div>
@@ -171,3 +168,4 @@ onSubmit (e){
   );
     }
 }
+export default connect(null,{ userLoginRequest })(LoginForm)

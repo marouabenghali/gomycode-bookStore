@@ -1,17 +1,20 @@
-import { articles } from "./data";
+
 const initialState = {
-  articles,
+  articles: [],
   filtername: "",
   filtertype: "Category",
   filterdispo: "",
   selledarticle: [],
   filterlabel: "Label",
   Findbyrating: 1,
-  selectedBook:0
+  selectedBook: 0,
+  bookadmin: []
 };
 const rootReducer = (state = initialState, action) => {
   if (action.type === "FILTER_NAME") {
     return { ...state, filtername: action.payload };
+  } else if (action.type === "GET_BOOKS") {
+    return { ...state, articles: action.payload };
   } else if (action.type === "FILTER_TYPE") {
     return { ...state, filtertype: action.payload };
   } else if (action.type === "FILTER_STOCK") {
@@ -22,8 +25,8 @@ const rootReducer = (state = initialState, action) => {
       selledarticle:
         state.selledarticle.filter(el => el.id === action.payload.id).length > 0
           ? state.selledarticle.map(el =>
-            el.id === action.payload.id ? { ...el, qt: el.qt + 1 } : el
-          )
+              el.id === action.payload.id ? { ...el, qt: el.qt + 1 } : el
+            )
           : [...state.selledarticle, action.payload]
     };
   } else if (action.type === "ADD_ARTICLE") {
@@ -40,28 +43,22 @@ const rootReducer = (state = initialState, action) => {
         i === action.payload && el.qt > 0 ? { ...el, qt: el.qt - 1 } : el
       )
     };
-
   } else if (action.type === "FILTER_LABEL") {
     return { ...state, filterlabel: action.payload };
-  }
-  else if (action.type === "FIND_RATING") {
+  } else if (action.type === "FIND_RATING") {
     return { ...state, Findbyrating: action.payload };
-  }
-  else if (action.type === "CONFIRM_ORDER") {
+  } else if (action.type === "CONFIRM_ORDER") {
     return {};
-  }
-  else if (action.type === "DELETE_ARTICLE") {
+  } else if (action.type === "DELETE_ARTICLE") {
     return {
       ...state,
       selledarticle: state.selledarticle.filter(el => el.id !== action.payload)
     };
-  }else if(action.type==="SELECT_BOOK"){
-    return {
-      ...state,
-      selectedBook: action.payload
-    }
+  } else if (action.type === "SELECT_BOOK") {
+    return { ...state, selectedBook: action.payload };
+  } else if (action.type === "GET_BOOKSADMIN") {
+    return { ...state, bookadmin: action.payload };
   }
   return state;
-};
-
+}
 export default rootReducer;
